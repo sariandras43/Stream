@@ -1,0 +1,6 @@
+<p>video works!</p>
+{{filename}}
+{{extension}}
+<video id="videoPlayer" width="50%" controls autoplay >
+    <source [src]="config.baseUrl + '/videos/'+filename" [type]="'video/'+extension"/>
+</video>

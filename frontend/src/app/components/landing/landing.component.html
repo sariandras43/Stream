@@ -1,0 +1,12 @@
+<h1>Filmek</h1>
+@for (v of videos; track $index) {
+  {{v.thumbnail}}
+<div class="card">
+
+  <img [src]="config.baseUrl+'/thumbnails/'+v.thumbnail" class="card-img-top" alt="" />
+  <div class="card-body">
+    <h5 class="card-title">{{v.filename}}</h5>
+    <a [routerLink]="['/video', v.filename]" class="btn btn-primary">Megnézem</a>
+  </div>
+</div>
+}
