@@ -1,12 +1,13 @@
 <h1>Filmek</h1>
-@for (v of videos; track $index) {
-  {{v.thumbnail}}
-<div class="card">
-
-  <img [src]="config.baseUrl+'/thumbnails/'+v.thumbnail" class="card-img-top" alt="" />
-  <div class="card-body">
-    <h5 class="card-title">{{v.filename}}</h5>
-    <a [routerLink]="['/video', v.filename]" class="btn btn-primary">Megnézem</a>
+<div class="row justify-content-center">
+  @for (v of videos; track $index) {
+  <div class="card col-lg-4 col-md-4 col-sm-12 col-12 mx-4 my-4">
+    <img [src]="config.baseUrl+'/thumbnails/'+v.thumbnail" class="card-img-top" alt="" />
+    <div class="card-body">
+      <h5 class="card-title">{{v.filename}}</h5>
+      <a [routerLink]="['/video', v.filename]" class="btn btn-primary">Megnézem</a>
+    </div>
   </div>
+  }
+
 </div>
-}

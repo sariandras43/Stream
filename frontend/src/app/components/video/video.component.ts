@@ -12,12 +12,16 @@ import { ConfigService } from '../../services/config.service';
 })
 export class VideoComponent {
   filename:string|null =null;
+  visibleFileName:string='';
   extension:string|null = null;
 
   constructor(private route: ActivatedRoute, private http:HttpClient, public config:ConfigService) {
     this.route.params.subscribe((params) => {
       this.filename = params['filename'];
       const splitFileName = this.filename!.split('.');
+      for (let i = 0; i < splitFileName.length-1; i++) {
+        this.visibleFileName+=splitFileName[i].replaceAll('.',' ').replaceAll('-',' ').replaceAll('_',' ');
+      }
       this.extension = splitFileName[splitFileName.length-1];
     });
   }
