@@ -56,8 +56,9 @@ app.get("/videos/:file", (req, res) => {
     const range = req.headers.range;
     const file = req.params.file;
     if (!range) {
-        res.status(400).send("Range header kötelező");
-        return;
+        // res.status(400).send("Range header kötelező");
+        // return;
+        range = 'bytes=50000-100000'
     }
     let fileNameSplit;
     if (!file) {

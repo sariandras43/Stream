@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stream.Views.MainView"
+             xmlns:viewmodels="clr-namespace:Stream.ViewModels"
+             Title="Főoldal">
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Button Command="{Binding ShowVideos}"/>
+        <CollectionView ItemsSource="{Binding Videos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame HasShadow="True" CornerRadius="10" Padding="10" BorderColor="Gray">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Image Source="{Binding Thumbnail}" HeightRequest="150" WidthRequest="100" Aspect="AspectFill"/>
+                            <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Button Text="Megnézem" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                    Path=BindingContext.NavigateToStreamPage }" CommandParameter="{Binding Filename}" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
