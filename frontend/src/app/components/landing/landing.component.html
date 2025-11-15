@@ -1,5 +1,8 @@
 <h1>Filmek</h1>
 <div class="row justify-content-center">
+  @if(errorMessage){
+    <h2>{{errorMessage}}</h2>
+  }
   @for (v of videos; track $index) {
   <div class="card col-lg-4 col-md-4 col-sm-12 col-12 mx-4 my-4">
     <img [src]="config.baseUrl+'/thumbnails/'+v.thumbnail" class="card-img-top" alt="" />

@@ -24,7 +24,13 @@ export class LandingComponent {
   private GetVideoNames() {
     return this.videoService.GetVideoFileNames().subscribe({
       next: (res: VideoModel[]) => (this.videos = res),
-      error: (err: Error) => (this.errorMessage = err.message)
+      error: (err) => {
+        if (err.status = 404) {
+          this.errorMessage = "Nem található a backend szerver."
+          return;
+        }
+        this.errorMessage = err.message
+      }
     });
   }
 }
