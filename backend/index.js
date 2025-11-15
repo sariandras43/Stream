@@ -25,7 +25,15 @@ app.get("/videos", async (req, res) => {
             acceptedExtensions.includes(f.split(".")[f.split(".").length - 1])
         );
 
-        console.log(directoryPath);
+        if (!fs.existsSync('./public/thumbnails')) {
+            try {
+                fs.mkdirSync("./public/thumbnails", {recursive:true});   
+            } catch (err) {
+                console.error(err);
+            }         
+        }
+
+        // console.log(directoryPath);
         const thumbnails = videoFiles.map((file) => {
             const filePath = path.join(directoryPath, file);
             const thumbnailPath = path.join(
@@ -74,6 +82,10 @@ app.get("/videos/:file", (req, res) => {
             return;
         }
     }
+    // if (!fs.existsSync(path.join(directoryPath,file))) {
+    //     console.log(path.join(directoryPath, file));
+    //     return res.status(404).json({ message: "Ez a videó nem létezik." });
+    // }
     const videoPath = directoryPath + "/" + file;
     console.log(videoPath)
     const videoSize = fs.statSync(videoPath).size;
