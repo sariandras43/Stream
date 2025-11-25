@@ -33,6 +33,8 @@ namespace Stream.ViewModels
                 Videos.Clear();
                 foreach (var v in videos)
                 {
+                    string thumb = v.Thumbnail;
+                    v.Thumbnail = $"http://192.168.1.70:3000/thumbnails/2021-12-29-1017-55_thumb.jpg";
                     Videos.Add(v);
                 }
 

@@ -15,6 +15,5 @@
             HorizontalOptions="Center" />
         <toolkit:MediaElement Source="{Binding StreamUrl}"
               ShouldShowPlaybackControls="True" HeightRequest="300" Aspect="AspectFit" ShouldAutoPlay="False"/>
-        <Button Text="Load Video with Range" Command="{Binding StartStream}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -18,8 +18,8 @@ namespace Stream.Helpers
             {
                 client.BaseAddress = new System.Uri(url);
                 string uri = "/videos";
-                var result = await client.GetStringAsync(uri);
-                return JsonConvert.DeserializeObject<List<VideoModel>>(result)!;
+                var response = await client.GetStringAsync(uri);
+                return JsonConvert.DeserializeObject<List<VideoModel>>(response)!;
             }
         }
 

@@ -33,6 +33,7 @@ namespace Stream.ViewModels
         {
             StartStream = new Command(StartVideo);
         }
+
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             string? converted = query["FileName"] as string;
@@ -40,7 +41,6 @@ namespace Stream.ViewModels
             {
                 FileName = (string)query["FileName"];
                 StreamUrl = Config.BaseUrl + "/videos/" + FileName;
-                App.Current!.MainPage!.DisplayAlert("Hiba történt!", StreamUrl, "Vissza");
             }
             else
             {
